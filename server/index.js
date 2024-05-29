@@ -1,19 +1,31 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
-const { PORT } = process.env;
-const hobbyRoute = require("./routes/hobbies");
-const app = express();
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
+const knex = require('knex');
+const knexConfig = require('./knexfile');
+const hobbiesRouter = require('./routes/hobbies');
 
+
+// Initialize Knex with the development configuration
+const db = knex(knexConfig);
+
+// Create an Express app
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+// Middleware setup
+app.use(express.json());
 app.use(cors());
 
-app.use(express.json());
+// Routes
+app.use('/api/hobbies', hobbiesRouter(db));
 
-//add routes
-app.use("/hobbies", hobbyRoute);
+// Handle all other routes
+app.get('*', (req, res) => {
+  res.status(404).json({ message: 'Page not found!' });
+});
 
-// app.use("/videoImage", express.static("./public/images"));
-
+// Start the server
 app.listen(PORT, () => {
-  console.log("Your server is working on port " + PORT);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
