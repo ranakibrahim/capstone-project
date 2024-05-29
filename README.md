@@ -29,7 +29,7 @@ Starting and maintaining a hobby can be a pretty dawning task. It can get overwh
   - Users will be able to add images
   - Users will have access to note files
 - _Hobby details_
-  - User will be able to view all details regarding this hobby including:
+  - User will be able to view all details specific to this hobby including:
     - hobby name
     - date added
     - gallery
@@ -85,14 +85,14 @@ Starting and maintaining a hobby can be a pretty dawning task. It can get overwh
     - page where a user adds their information after signing up
   - Routes
     - /add-details
-- **Profile**
+- **AddHobbies**
   - Description
     - page where a user can choose their hobbies
   - Routes
-    - /profile
+    - /add-hobbies
 - **Dashboard**
   - Description
-    - page where a user can view their hobbies and information
+    - page where a user can view their hobbies and other information
   - Routes
     - /dashboard
 
@@ -100,49 +100,88 @@ Starting and maintaining a hobby can be a pretty dawning task. It can get overwh
 
 #### Home page
 
-![](mockups/home.png)
+![](readme_assets/home.png)
 
 #### Sign-up Page
 
-![](mockups/signup.png)
+![](readme_assets/signup.png)
 
 #### Add Details Page (upon sign up)
 
 ##### Step 1
 
-![](mockups/add-details-1.png)
+![](readme_assets/add-details-1.png)
 
 ##### Step 2
 
-![](mockups/add-details-2.png)
+![](readme_assets/add-details-2.png)
 
 ##### Step 3
 
-![](mockups/add-details-3.png)
+![](readme_assets/add-details-3.png)
 
 #### Log-in Page
 
-![](mockups/login.png)
+![](readme_assets/login.png)
 
 #### Profile - Choose Hobbies (upon first login only)
 
-![](mockups/profile1.png)
+![](readme_assets/profile1.png)
 
 #### Profile - Dashboard
 
-![](mockups/profile2.png)
+![](readme_assets/profile2.png)
 
 #### Hobby
 
-![](mockups/hobby.png)
+![](readme_assets/hobby.png)
 
 ### Data
 
-Describe your data and the relationships between them. You can show this visually using diagrams, or write it out.
+![](readme_assets/er_diagram.png)
 
 ### Endpoints
 
-List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
+**GET /dashboard/:userID**
+
+- assuming the user is logged in, will display the dashboard for the user with the corresponding data
+
+Parameters:
+
+- _userProfileID_: user's ID as it is in the database
+
+Response:
+
+```
+{
+    "userID": 1,
+    "email": "janedoe@gmail.com",
+    "password": "janedoe123", //will be bycrypted once endpoint is implemented
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "city": "Toronto",
+    "country": "Canada",
+    ...
+}
+```
+
+**GET /hobby/:userProfileID**
+
+Parameters:
+
+- _userProfileID_: user's ID as it is in the database
+
+Response:
+
+```
+{
+    "hobbyID: 5,
+    "userID": 1,
+    "startDate": 10/11/2024
+    "endDate": "",
+    ...
+}
+```
 
 ### Auth
 
@@ -152,53 +191,53 @@ List endpoints that your server will implement, including HTTP methods, paramete
 - Server
   - use JWTtoken to login and verify user
 
-- Server
 ## Roadmap
 
 1. **Initiation**
-    - define project
-    - understand what the project will do
-    - create a proposal document
-    - choose a tech stack
+   - define project
+   - understand what the project will do
+   - create a proposal document
+   - choose a tech stack
 2. **Planning**
-    - create mockups
-    - plan database and tables
-    - create user cases
+   - create mockups
+   - plan database and tables
+   - create user cases
 3. **Execution**
-    - Server - create HobbiAPI
-        - create database
-        - initialize express
-        - create migration file
-        - create seed file
-        - test API
-    - Server - create HobbyHopper
-        - create database
-        - initialize express
-        - create migration files
-        - create seed files (dummy values)
-        - test database
-    - Client - create mixins
-    - Client - create pages (non-functional)
-        - create home page
-        - create sign up page
-        - create add details page (stepper)
-        - create login page
-        - create profile page (use HobbiAPI to fetch data)
-        - create dashboard page
-        - create hobby page
-    - Client - apply functionality
-        - apply functionality to sign up page and connect to database
-        - continue sign up process (add details page)
-        - apply functionality to login page and connect to database
-        - apply functionality to profile page (send data to profile)
-        - apply functionality to dashboard page (pass states and fetch data)
-        - apply functionality to hobby page (fetch data)
+   - Server - create HobbiAPI
+     - create database
+     - initialize express
+     - create migration file
+     - create seed file
+     - test API
+   - Server - create HobbyHopper
+     - create database
+     - initialize express
+     - create migration files
+     - create seed files (dummy values)
+     - test database
+   - Client - create mixins
+   - Client - create pages (non-functional)
+     - create home page
+     - create sign up page
+     - create add details page (stepper)
+     - create login page
+     - create profile page (use HobbiAPI to fetch data)
+     - create dashboard page
+     - create hobby page
+   - Client - apply functionality
+     - apply functionality to sign up page and connect to database
+     - continue sign up process (add details page)
+     - apply functionality to login page and connect to database
+     - apply functionality to profile page (send data to profile)
+     - apply functionality to dashboard page (pass states and fetch data)
+     - apply functionality to hobby page (fetch data)
 4. **Monitoring and Controlling**
-    - Test sign up and login processes
-    - Test dashboard page and ensure data is being fetched properly
-    - Test hobby page and ensure data is fetched correctly
+   - Test sign up and login processes
+   - Test dashboard page and ensure data is being fetched properly
+   - Test hobby page and ensure data is fetched correctly
 5. **Closing**
-    - DEMO DAYYYYYYYYY
+   - DEMO DAYYYYYYYYY
+
 ## Nice-to-haves
 
 - ### Social media
