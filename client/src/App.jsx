@@ -1,7 +1,10 @@
 import "./App.scss";
 
 function App() {
-  return <>Welcome to your Capstone</>;
+  return (
+    <>
+    </>
+  );
 }
 
 export default App;

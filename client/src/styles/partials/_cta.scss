@@ -1,0 +1,48 @@
+@use "./colors" as color;
+
+//Call to Actions
+//desktop
+@mixin global-cta {
+  height: 2.375rem;
+  width: auto;
+  padding: 0 1rem;
+  border-radius: 1.25rem;
+}
+
+@mixin primary-cta {
+  background-color: color.$indigo;
+  color: color.$white;
+}
+
+@mixin secondary-cta {
+  background-color: color.$grey;
+  border: 1px solid color.$grey;
+}
+
+@mixin delete-cta {
+  background-color: color.$red;
+  color: color.$white;
+}
+
+@mixin textlink-cta {
+  color: color.$indigo;
+  margin-right: 4px;
+}
+
+@mixin hover-primary {
+  background-color: color.$graphite;
+}
+
+@mixin hover-secondary {
+  border: 1px solid color.$indigo;
+  color: color.$indigo;
+}
+
+@mixin hover-delete {
+  background-color: color.$white;
+}
+
+@mixin hover-textlink {
+  text-decoration: underline;
+  text-decoration-color: color.$indigo;
+}

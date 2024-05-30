@@ -1,0 +1,42 @@
+@use "./colors" as color;
+
+//Fields
+//desktab
+@mixin desktab-fields {
+  height: 2.375rem;
+  padding: 0 1rem;
+  margin-left: 0.25rem;
+  border-radius: 1.25rem;
+  color: color.$black;
+  &::placeholder {
+    color: color.$slate;
+  }
+}
+//mobile
+@mixin mobile-fields {
+  height: 2.25rem;
+  width: 100%;
+  padding: 0 1rem;
+  margin-left: 0.25rem;
+  border-radius: 1.25rem;
+  color: color.$black;
+  &::placeholder {
+    color: color.$slate;
+  }
+}
+
+//states
+//default
+@mixin default-state {
+  border: 1px solid color.$slate;
+}
+
+//active
+@mixin active-state {
+  border: 1px solid color.$indigo;
+}
+
+//error
+@mixin error-state {
+  border: 1px solid color.$red;
+}
