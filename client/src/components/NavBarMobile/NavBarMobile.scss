@@ -1,0 +1,53 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/padding" as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: $orange;
+  position: relative; // Add relative positioning to the navbar
+  @include apply-top-bottom-pad(
+    $mobile-before-headline,
+    $mobile-before-headline
+  );
+  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+
+  &__logo {
+    color: $snow;
+    margin: 0 auto;
+  }
+
+  &__burger {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+}
+
+.bm-menu-wrap {
+  position: fixed;
+  top: 5rem !important; // Override the default top position
+  bottom: 0 !important; // Align the menu with the bottom
+}
+
+.bm-menu {
+  background: $orange !important;
+}
+
+.bm-item-list {
+  color: white;
+  padding: 2.5em 1.5em 0;
+}
+
+.bm-item {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: white !important;
+  transition: color 0.2s;
+}
+
+.bm-item:hover {
+  color: #a90000 !important;
+}
