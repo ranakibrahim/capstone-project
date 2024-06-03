@@ -1,0 +1,37 @@
+//Font size and height
+@mixin apply-font($size, $height) {
+  font-size: $size;
+  line-height: $height;
+}
+
+//Padding top and bottom
+@mixin apply-top-bottom-pad($top, $bottom) {
+  padding-top: $top;
+  padding-bottom: $bottom;
+}
+
+//Margin top and bottom
+@mixin apply-top-bottom-mar($top, $bottom) {
+  margin-top: $top;
+  margin-bottom: $bottom;
+}
+
+//Padding left and right
+@mixin apply-left-right-pad($left, $right) {
+  padding-left: $left;
+  padding-right: $right;
+}
+
+//Tablet Break-point
+@mixin tablet {
+  @media(min-width: 768px) and (max-width: 1279px) {
+    @content;
+  }
+}
+
+//Desktop Break-point
+@mixin desktop {
+  @media(min-width: 1280px) {
+    @content;
+  }
+}
