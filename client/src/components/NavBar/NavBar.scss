@@ -6,16 +6,42 @@
   display: flex;
   align-items: center;
   background-color: $orange;
-  position: relative; // Add relative positioning to the navbar
   @include apply-top-bottom-pad(
     $mobile-before-headline,
     $mobile-before-headline
   );
   @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
 
+  @include desktoptablet {
+    @include apply-top-bottom-pad(
+      $desktoptablet-before-headline,
+      $desktoptablet-before-headline
+    );
+    @include apply-left-right-pad(
+      $desktoptablet-between-comp,
+      $desktoptablet-between-comp
+    );
+  }
+
+  &--desktoptablet {
+    display: none;
+    @include desktoptablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &--mobile {
+    @include desktoptablet {
+      display: none;
+    }
+  }
+
   &__logo {
     color: $snow;
     margin: 0 auto;
+    @include desktoptablet {
+      margin: 0;
+    }
   }
 
   &__burger {
@@ -23,12 +49,31 @@
     height: 25px;
     cursor: pointer;
   }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: $desktoptablet-between-comp;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__item {
+    color: $jet;
+    font-weight: 500;
+    &--disabled {
+    opacity: 30%;
+    }
+  }
 }
 
+//Burger menu styling
 .bm-menu-wrap {
   position: fixed;
-  top: 5rem !important; // Override the default top position
-  bottom: 0 !important; // Align the menu with the bottom
+  top: 5rem !important;
+  bottom: 0 !important;
 }
 
 .bm-menu {
