@@ -38,7 +38,6 @@
 
   &__logo {
     color: $snow;
-    margin: 0 auto;
     @include desktoptablet {
       margin: 0;
     }
@@ -58,13 +57,26 @@
 
   &__link {
     text-decoration: none;
+
+    &--mobile{
+      margin: 0 auto;
+    }
   }
 
   &__item {
     color: $jet;
     font-weight: 500;
     &--disabled {
-    opacity: 30%;
+      opacity: 30%;
+      cursor: not-allowed;
+    }
+    &:hover {
+      color: $snow;
+      transition: color 0.75s;
+    }
+    &--active {
+      color: $snow;
+      font-weight: 700;
     }
   }
 }
@@ -89,8 +101,6 @@
   display: inline-block;
   text-decoration: none;
   margin-bottom: 10px;
-  color: white !important;
-  transition: color 0.2s;
 }
 
 .bm-item:hover {
