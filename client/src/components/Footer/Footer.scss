@@ -7,7 +7,7 @@
   flex-direction: column;
   gap: $mobile-between-comp;
   background-color: $orange;
- 
+
   @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
   @include apply-top-bottom-pad(
     $mobile-before-headline,
@@ -31,7 +31,7 @@
     font-size: 8px;
     display: flex;
     gap: $mobile-between-comp;
-
+    color: $jet;
     @include desktoptablet {
       font-size: 15px;
       gap: $desktoptablet-between-comp;
@@ -46,6 +46,7 @@
     font-size: 7px;
     font-weight: 600;
     align-self: center;
+    color: $jet;
     @include desktoptablet {
       font-size: 12px;
     }
