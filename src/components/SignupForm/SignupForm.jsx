@@ -1,7 +1,7 @@
-import "./SignupForm.scss";
+import Form from "../Form/Form";
 
 export default function SignupForm() {
   return (
-    <form></form>
-  )
+    <Form type="signup"/>
+  );
 }

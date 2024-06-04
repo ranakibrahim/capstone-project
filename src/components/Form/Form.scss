@@ -1,0 +1,68 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/padding" as *;
+
+.form {
+  background-color: $orange;
+  background-color: $orange;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: fit-content;
+  gap: $mobile-between-comp;
+
+  @include apply-top-bottom-mar(
+    $mobile-before-headline,
+    $mobile-before-headline
+  );
+  @include apply-top-bottom-pad(
+    $mobile-before-headline,
+    $mobile-before-headline
+  );
+  @include apply-left-right-mar($mobile-between-comp, $mobile-between-comp);
+  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+
+  &__title {
+    color: $snow;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  &__profile {
+    width: 2.5rem;
+    height: 2.5rem;
+    align-self: center;
+  }
+
+  &__label {
+    color: $blush;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__field {
+    border-radius: 8px;
+    border: 1px solid $blush;
+    outline: none;
+    padding: 0 0.5rem;
+    min-height: 1.75rem;
+    color: $jet;
+  }
+
+  &__submit {
+    background-color: $snow;
+    color: $blush;
+    font-weight: 600;
+    min-height: 1.75rem;
+    border-radius: 8px;
+    border: 1px solid $blush;
+    width: 5rem;
+    align-self: center;
+
+    &:hover {
+      background-color: $blush;
+      color: $snow;
+      cursor: pointer;
+    }
+  }
+}
