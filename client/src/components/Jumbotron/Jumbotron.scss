@@ -7,13 +7,16 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 35vh;
+  height: 45vh;
   width: 100%;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+@include desktoptablet {
+  height: 60vh;
 
+}
   &__banner {
     text-align: center;
     position: relative;

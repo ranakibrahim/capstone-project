@@ -1,0 +1,75 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/padding" as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: $mobile-between-comp;
+  background-color: $orange;
+ 
+  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+  @include apply-top-bottom-pad(
+    $mobile-before-headline,
+    $mobile-before-headline
+  );
+
+  @include desktoptablet {
+    gap: $desktoptablet-between-comp;
+
+    @include apply-top-bottom-pad(
+      $desktoptablet-before-headline,
+      $desktoptablet-before-headline
+    );
+    @include apply-left-right-pad(
+      $desktoptablet-between-comp,
+      $desktoptablet-between-comp
+    );
+  }
+
+  &__sections {
+    font-size: 8px;
+    display: flex;
+    gap: $mobile-between-comp;
+
+    @include desktoptablet {
+      font-size: 15px;
+      gap: $desktoptablet-between-comp;
+    }
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__copyrights {
+    font-size: 7px;
+    font-weight: 600;
+    align-self: center;
+    @include desktoptablet {
+      font-size: 12px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    font-size: 13px;
+    color: $snow;
+    @include desktoptablet {
+      font-size: 25px;
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    @include desktoptablet {
+      width: 35px;
+      height: 35px;
+    }
+  }
+}
