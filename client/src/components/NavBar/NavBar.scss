@@ -1,0 +1,108 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/padding" as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: $orange;
+  @include apply-top-bottom-pad(
+    $mobile-before-headline,
+    $mobile-before-headline
+  );
+  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+
+  @include desktoptablet {
+    @include apply-top-bottom-pad(
+      $desktoptablet-before-headline,
+      $desktoptablet-before-headline
+    );
+    @include apply-left-right-pad(
+      $desktoptablet-between-comp,
+      $desktoptablet-between-comp
+    );
+  }
+
+  &--desktoptablet {
+    display: none;
+    @include desktoptablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &--mobile {
+    @include desktoptablet {
+      display: none;
+    }
+  }
+
+  &__logo {
+    color: $snow;
+    @include desktoptablet {
+      margin: 0;
+    }
+  }
+
+  &__burger {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: $desktoptablet-between-comp;
+  }
+
+  &__link {
+    text-decoration: none;
+
+    &--mobile{
+      margin: 0 auto;
+    }
+  }
+
+  &__item {
+    color: $jet;
+    font-weight: 500;
+    &--disabled {
+      opacity: 30%;
+      cursor: not-allowed;
+    }
+    &:hover {
+      color: $snow;
+      transition: color 0.75s;
+    }
+    &--active {
+      color: $snow;
+      font-weight: 700;
+    }
+  }
+}
+
+//Burger menu styling
+.bm-menu-wrap {
+  position: fixed;
+  top: 5rem !important;
+  bottom: 0 !important;
+}
+
+.bm-menu {
+  background: $orange !important;
+}
+
+.bm-item-list {
+  color: white;
+  padding: 2.5em 1.5em 0;
+}
+
+.bm-item {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.bm-item:hover {
+  color: #a90000 !important;
+}
