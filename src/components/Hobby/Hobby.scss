@@ -1,0 +1,32 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/padding" as *;
+
+.hobby-card {
+  background-color: $orange;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  border-radius: 8px;
+ 
+  @include apply-top-bottom-pad(
+    $mobile-before-headline,
+    $mobile-before-headline
+  );
+  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+
+  &__image {
+    width: 200px;
+    height: 150px;
+  }
+
+  &__title {
+    color: $snow;
+    margin-top: 10px;
+  }
+
+  &__description {
+    color: $snow;
+    font-size: 12px;
+  }
+}
