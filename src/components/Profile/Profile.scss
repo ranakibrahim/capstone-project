@@ -1,0 +1,21 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/padding" as *;
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: $mobile-between-comp;
+  
+  &__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  &__username {
+    color: $jet;
+  }
+  &__logout {
+    text-decoration: none;
+    color: $jet;
+  }
+}

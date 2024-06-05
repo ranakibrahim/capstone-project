@@ -1,0 +1,39 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/padding" as *;
+
+.hobbies-list {
+  background-color: $jet;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $mobile-between-comp;
+  margin-top: $mobile-between-comp;
+
+  @include apply-top-bottom-pad(
+    $mobile-before-headline,
+    $mobile-before-headline
+  );
+
+  @include desktoptablet {
+    gap: $desktoptablet-between-comp;
+    margin-top: $desktoptablet-between-comp;
+    @include apply-top-bottom-pad(
+      $desktoptablet-before-headline,
+      $desktoptablet-before-headline
+    );
+  }
+
+  &__title {
+    color: $snow;
+  }
+
+  &__all-hobbies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4vh;
+  }
+}

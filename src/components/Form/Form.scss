@@ -4,13 +4,18 @@
 
 .signup,
 .login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 70vh;
   @include apply-top-bottom-mar(
     $mobile-before-headline,
     $mobile-before-headline
   );
+
+  @include desktoptablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   &__title {
     color: $jet;
     text-align: center;
@@ -19,11 +24,9 @@
 
 .form {
   background-color: $orange;
-  background-color: $orange;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  min-height: fit-content;
   gap: $mobile-between-comp;
 
   @include apply-top-bottom-mar(
@@ -94,7 +97,11 @@
     &:hover {
       background-color: $blush;
       color: $snow;
+      border: 1px solid $snow;
       cursor: pointer;
+      transition: background-color 1s;
+      transition: color 1s;
+      transition: border 1s;
     }
   }
 }
