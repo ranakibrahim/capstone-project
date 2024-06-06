@@ -1,5 +1,6 @@
 import "./SignupForm.scss";
 import profileIcon from "../../assets/icons/profile-icon.svg";
+import errorIcon from "../../assets/icons/error.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
@@ -9,6 +10,16 @@ export default function SignupForm() {
   const [cities, setCities] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
+  const [error, setError] = useState([
+    { email: false },
+    { password: false },
+    { confPassword: false },
+    { firstName: false },
+    { lastName: false },
+    { selectedCountry: false },
+    { selectedCity: false },
+  ]);
+  const [passError, setPassError] = useState(false);
 
   useEffect(() => {
     const getCountries = async () => {
@@ -18,7 +29,9 @@ export default function SignupForm() {
           value: country.cca2,
           label: country.name.common,
         }));
-        setCountries(countryOptions.sort((a, b) => a.label.localeCompare(b.label)));
+        setCountries(
+          countryOptions.sort((a, b) => a.label.localeCompare(b.label))
+        );
       } catch (error) {
         console.error("Error fetching countries:", error);
       }
@@ -59,20 +72,49 @@ export default function SignupForm() {
   const handleSignup = (event) => {
     event.preventDefault();
 
-    const form = event.target;
-    
-    const newUser = {
-      email: form.email.value,
-      password: form.password.value,
-      first_name: form.firstName.value,
-      last_name: form.lastName.value,
-      country: selectedCountry.label,
-      city: selectedCity.label,
+    const { email, password, confPassword, firstName, lastName } =
+      event.target.elements;
+
+    const newErrorState = {
+      email: !email.value,
+      password: !password.value,
+      confPassword: !confPassword.value,
+      firstName: !firstName.value,
+      lastName: !lastName.value,
+      selectedCountry: !selectedCountry,
+      selectedCity: !selectedCity,
+    };
+
+    setError(newErrorState);
+
+    const hasError = Object.values(newErrorState).some(
+      (fieldError) => fieldError
+    );
+
+    if (hasError) {
+      return;
     }
 
-    axios.post(`${import.meta.env.VITE_USERS}/signup`, newUser);
+    if (password.value !== confPassword.value) {
+      setPassError(true)
+      return;
+    }
 
-    console.log(newUser);
+    const newUser = {
+      email: email.value,
+      password: password.value,
+      first_name: firstName.value,
+      last_name: lastName.value,
+      country: selectedCountry.label,
+      city: selectedCity.label,
+    };
+
+    try {
+      axios.post(`${import.meta.env.VITE_USERS}/signup`, newUser);
+      console.log("New User created with email: ", email.value);
+    } catch (e) {
+      console.error("There was error signing up.");
+    }
   };
 
   return (
@@ -85,6 +127,16 @@ export default function SignupForm() {
         <label htmlFor="email" className="form__label">
           email
           <input type="email" id="email" name="email" className="form__field" />
+          {error.email && (
+            <span className="form__error">
+              <img
+                src={errorIcon}
+                alt="error icon"
+                className="form__error-icon"
+              />
+              This field is required
+            </span>
+          )}
         </label>
 
         <label htmlFor="password" className="form__label">
@@ -95,6 +147,16 @@ export default function SignupForm() {
             name="password"
             className="form__field"
           />
+          {error.password && (
+            <span className="form__error">
+              <img
+                src={errorIcon}
+                alt="error icon"
+                className="form__error-icon"
+              />
+              This field is required
+            </span>
+          )}
         </label>
 
         <label htmlFor="confPassword" className="form__label">
@@ -105,6 +167,26 @@ export default function SignupForm() {
             name="confPassword"
             className="form__field"
           />
+          {error.confPassword && (
+            <span className="form__error">
+              <img
+                src={errorIcon}
+                alt="error icon"
+                className="form__error-icon"
+              />
+              This field is required
+            </span>
+          )}
+          {passError && (
+            <span className="form__error">
+              <img
+                src={errorIcon}
+                alt="error icon"
+                className="form__error-icon"
+              />
+              Passwords don't match
+            </span>
+          )}
         </label>
 
         <label htmlFor="firstName" className="form__label">
@@ -115,6 +197,16 @@ export default function SignupForm() {
             name="firstName"
             className="form__field"
           />
+          {error.firstName && (
+            <span className="form__error">
+              <img
+                src={errorIcon}
+                alt="error icon"
+                className="form__error-icon"
+              />
+              This field is required
+            </span>
+          )}
         </label>
 
         <label htmlFor="lastName" className="form__label">
@@ -125,6 +217,16 @@ export default function SignupForm() {
             name="lastName"
             className="form__field"
           />
+          {error.lastName && (
+            <span className="form__error">
+              <img
+                src={errorIcon}
+                alt="error icon"
+                className="form__error-icon"
+              />
+              This field is required
+            </span>
+          )}
         </label>
 
         <label htmlFor="country" className="form__label">
@@ -141,6 +243,16 @@ export default function SignupForm() {
               }),
             }}
           />
+          {error.selectedCountry && (
+            <span className="form__error">
+              <img
+                src={errorIcon}
+                alt="error icon"
+                className="form__error-icon"
+              />
+              This field is required
+            </span>
+          )}
         </label>
 
         <label htmlFor="city" className="form__label">
@@ -158,6 +270,16 @@ export default function SignupForm() {
               }),
             }}
           />
+          {error.selectedCity && (
+            <span className="form__error">
+              <img
+                src={errorIcon}
+                alt="error icon"
+                className="form__error-icon"
+              />
+              This field is required
+            </span>
+          )}
         </label>
 
         <button type="submit" className="form__submit">

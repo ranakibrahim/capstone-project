@@ -21,6 +21,7 @@
     text-align: center;
   }
 }
+
 .form {
   background-color: $orange;
   border-radius: 8px;
@@ -102,5 +103,15 @@
       transition: color 1s;
       transition: border 1s;
     }
+  }
+
+  &__error {
+    font-size: 9px;
+    color: #E71F1F;
+  }
+
+  &__error-icon {
+    width: 10px;
+    height: 10px;
   }
 }
