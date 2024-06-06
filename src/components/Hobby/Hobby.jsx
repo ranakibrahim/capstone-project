@@ -2,16 +2,15 @@ import React from "react";
 import placeholderImg from "../../assets/images/placeholder.png";
 import "./Hobby.scss";
 
-export default function Hobby({ id, name, desc, isChecked, onChecked }) {
+export default function Hobby({ id, name, image, desc, isChecked, onChecked }) {
   const handleClick = () => {
     onChecked(id);
   };
-
   return (
     <article className="hobby-card">
       <section className="hobby-card__content">
         <img
-          src={placeholderImg}
+          src={image}
           alt="hobby image"
           className="hobby-card__image"
         />

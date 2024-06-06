@@ -53,7 +53,9 @@ export default function HobbiesList() {
         }
       );
       console.log(response.data);
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error sending data");
+    }
 
     setCheckedState({});
     setChosenHobbyIds([]);
@@ -73,6 +75,7 @@ export default function HobbiesList() {
             key={hobby.id}
             id={hobby.id}
             name={hobby.hobby_name}
+            image={hobby.image}
             desc={hobby.hobby_description}
             wiki={hobby.hobby_wiki}
             onChecked={handleChecked}

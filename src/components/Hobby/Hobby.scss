@@ -15,18 +15,19 @@
   &__image {
     width: 200px;
     height: 150px;
+    border-radius: 8px;
   }
 
   &__title {
     color: $snow;
     margin-top: 10px;
-    text-align: center;
+    text-align: left;
   }
 
   &__description {
     color: $snow;
     font-size: 12px;
-    text-align: center;
+    text-align: left;
   }
 
   &__choose {
