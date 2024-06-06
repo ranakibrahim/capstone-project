@@ -36,4 +36,32 @@
     justify-content: center;
     gap: 4vh;
   }
+
+  &__form {
+    z-index: 1;
+  }
+
+  &__submit {
+    position: fixed;
+    right: 16px;
+    bottom: 10px;
+    font-size: 20px;
+    background-color: $snow;
+    color: $blush;
+    font-weight: 600;
+    min-height: 1.75rem;
+    border-radius: 8px;
+    border: 1px solid $blush;
+    width: 5rem;
+
+    &:hover {
+      background-color: $blush;
+      color: $snow;
+      border: 1px solid $snow;
+      cursor: pointer;
+      transition: background-color 1s;
+      transition: color 1s;
+      transition: border 1s;
+    }
+  }
 }
