@@ -3,11 +3,13 @@ import errorIcon from "../../assets/icons/error.svg";
 import profileIcon from "../../assets/icons/profile-icon.svg";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Loginform() {
+export default function LoginForm({ setToken }) {
   const [error, setError] = useState([{ email: false }, { password: false }]);
+  const navigate = useNavigate();
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     const { email, password } = event.target.elements;
 
@@ -26,13 +28,25 @@ export default function Loginform() {
       return;
     }
 
-    const loginUser = {
-      email: email.value,
-      password: password.value,
-    };
+    try {
+      const loginUser = {
+        email: email.value,
+        password: password.value,
+      };
 
-    axios.post(`${import.meta.env.VITE_USERS}/login`, loginUser);
-    console.log("User logged in with email: ", loginUser.email);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_USERS}/login`,
+        loginUser
+      );
+      console.log("User logged in with email: ", loginUser.email);
+      const { token } = data;
+      
+      sessionStorage.setItem("token", token);
+      setToken(token);
+      navigate("/choose-hobbies");
+    } catch (e) {
+      console.error(e);
+    }
   };
   return (
     <main className="login">
