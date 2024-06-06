@@ -6,7 +6,7 @@ export default function LoginPage() {
     <>
       <NavBar />
       <SignupForm/>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }

@@ -10,7 +10,6 @@ export default function Footer() {
       <section className="footer__top">
         <section className="footer__sections">
           <section className="footer__about-section">
-            <h4 className="footer__title">About</h4>
             <ul className="footer__list">
               <li className="footer__item">About</li>
               <li className="footer__item">About</li>
