@@ -50,7 +50,7 @@ export default function SignupForm() {
 
   const handleCountryChange = (selectedOption) => {
     setSelectedCountry(selectedOption);
-    setSelectedCity(null); // Reset city selection
+    setSelectedCity(null);
   };
 
   const handleCityChange = (selectedOption) => {
@@ -58,6 +58,21 @@ export default function SignupForm() {
   };
   const handleSignup = (event) => {
     event.preventDefault();
+
+    const form = event.target;
+    
+    const newUser = {
+      email: form.email.value,
+      password: form.password.value,
+      first_name: form.firstName.value,
+      last_name: form.lastName.value,
+      country: selectedCountry.label,
+      city: selectedCity.label,
+    }
+
+    axios.post(`${import.meta.env.VITE_USERS}/signup`, newUser);
+
+    console.log(newUser);
   };
 
   return (
@@ -70,16 +85,6 @@ export default function SignupForm() {
         <label htmlFor="email" className="form__label">
           email
           <input type="email" id="email" name="email" className="form__field" />
-        </label>
-
-        <label htmlFor="username" className="form__label">
-          username
-          <input
-            type="text"
-            id="username"
-            name="username"
-            className="form__field"
-          />
         </label>
 
         <label htmlFor="password" className="form__label">

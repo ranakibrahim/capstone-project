@@ -1,9 +1,19 @@
 import "./LoginForm.scss";
 import profileIcon from "../../assets/icons/profile-icon.svg";
+import axios from "axios";
 
 export default function Loginform() {
   const handleLogin = (event) => {
     event.preventDefault();
+    const form = event.target;
+
+    const loginUser = {
+      email: form.email.value,
+      password: form.password.value,
+    };
+
+    axios.post(`${import.meta.env.VITE_USERS}/login`, loginUser);
+    console.log(loginUser);
   };
   return (
     <main className="login">
@@ -12,12 +22,12 @@ export default function Loginform() {
         <h2 className="form__title">Login</h2>
         <img src={profileIcon} alt="profile icon" className="form__profile" />
 
-        <label htmlFor="usernameEmail" className="form__label">
-          username/email
+        <label htmlFor="email" className="form__label">
+          email
           <input
             type="text"
-            id="usernameEmail"
-            name="usernameEmail"
+            id="email"
+            name="email"
             className="form__field"
           />
         </label>

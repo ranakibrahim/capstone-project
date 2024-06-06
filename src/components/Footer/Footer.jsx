@@ -44,10 +44,10 @@ export default function Footer() {
         <section className="footer__right">
           <h3 className="footer__logo">Hobby Hopper</h3>
           <section className="footer__social-media">
-            <img src={xIcon} alt="x icon" className="footer__icon"/>
-            <img src={youtubeIcon} alt="x icon" className="footer__icon"/>
-            <img src={instagramIcon} alt="x icon" className="footer__icon"/>
-            <img src={facebookIcon} alt="x icon" className="footer__icon"/>
+            <img src={xIcon} alt="x icon" className="footer__icon" />
+            <img src={youtubeIcon} alt="x icon" className="footer__icon" />
+            <img src={instagramIcon} alt="x icon" className="footer__icon" />
+            <img src={facebookIcon} alt="x icon" className="footer__icon" />
           </section>
         </section>
       </section>
