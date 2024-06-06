@@ -4,6 +4,7 @@ import errorIcon from "../../assets/icons/error.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupForm() {
   const [countries, setCountries] = useState([]);
@@ -20,6 +21,7 @@ export default function SignupForm() {
     { selectedCity: false },
   ]);
   const [passError, setPassError] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getCountries = async () => {
@@ -96,22 +98,22 @@ export default function SignupForm() {
     }
 
     if (password.value !== confPassword.value) {
-      setPassError(true)
+      setPassError(true);
       return;
     }
 
-    const newUser = {
-      email: email.value,
-      password: password.value,
-      first_name: firstName.value,
-      last_name: lastName.value,
-      country: selectedCountry.label,
-      city: selectedCity.label,
-    };
-
     try {
+      const newUser = {
+        email: email.value,
+        password: password.value,
+        first_name: firstName.value,
+        last_name: lastName.value,
+        country: selectedCountry.label,
+        city: selectedCity.label,
+      };
       axios.post(`${import.meta.env.VITE_USERS}/signup`, newUser);
       console.log("New User created with email: ", email.value);
+      navigate("/login")
     } catch (e) {
       console.error("There was error signing up.");
     }
