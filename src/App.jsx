@@ -16,7 +16,7 @@ function App() {
         <Route path="/login" element={<LoginPage setToken={setToken} />} />
         <Route
           path="/choose-hobbies"
-          element={<ChooseHobbyPage token={token} />}
+          element={<ChooseHobbyPage token={token} setToken={token}/>}
         />
       </Routes>
     </BrowserRouter>
