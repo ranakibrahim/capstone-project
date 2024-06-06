@@ -7,7 +7,7 @@ export default function LoginPage() {
     <>
       <NavBar />
       <LoginForm />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
