@@ -1,0 +1,30 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/padding" as *;
+
+.profile-info {
+  background-color: $jet;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+  @include apply-top-bottom-pad(
+    $mobile-before-headline,
+    $mobile-before-headline
+  );
+  &__icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  &__name {
+    color: $snow;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  &__place {
+    @extend .profile-info__name;
+    font-size: 12px;
+  }
+}

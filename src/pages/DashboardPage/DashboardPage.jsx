@@ -1,13 +1,11 @@
+import "./DashboardPage.scss";
 import Profile from "../../components/Profile/Profile";
-import HobbiesList from "../../components/HobbiesList/HobbiesList";
-import "./ChooseHobbyPage.scss";
-import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 
-export default function ChooseHobbyPage({ token, setToken, user, setUser }) {
-  const navigate = useNavigate();
-
+export default function DashboardPage({ token, setToken, user, setUser }) {
   useEffect(() => {
     async function getProfile() {
       const { data } = await axios.get(
@@ -27,19 +25,12 @@ export default function ChooseHobbyPage({ token, setToken, user, setUser }) {
       setUser(null);
     }
   }, [token]);
-
   return (
     <>
       {user ? (
-        <main className="hobbies">
+        <main className="dashboard">
           <Profile fname={user.first_name} token={token} setToken={setToken} />
-          <h1 className="hobbies__title">
-            Hello,{" "}
-            <span className="hobbies__username">
-              {user.first_name}&nbsp;{user.last_name}
-            </span>
-          </h1>
-          <HobbiesList />
+          <ProfileInfo user={user}/>
         </main>
       ) : (
         <h2 className="invalid-session">
