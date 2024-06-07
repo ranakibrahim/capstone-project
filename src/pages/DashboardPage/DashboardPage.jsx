@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
-import Carousel from "../../components/Carousel/Carousel";
+import MyHobbies from "../../components/MyHobbies/MyHobbies";
 
 export default function DashboardPage({ token, setToken, user, setUser }) {
   const [hobbies, setHobbies] = useState([]);
@@ -54,7 +54,7 @@ export default function DashboardPage({ token, setToken, user, setUser }) {
         <main className="dashboard">
           <Profile fname={user.first_name} token={token} setToken={setToken} />
           <ProfileInfo user={user} />
-          <Carousel array={hobbies}/>
+          <MyHobbies array={hobbies}/>
         </main>
       ) : (
         <h2 className="invalid-session">

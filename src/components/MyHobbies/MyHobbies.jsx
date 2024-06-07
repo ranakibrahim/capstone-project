@@ -1,8 +1,8 @@
-import "./Carousel.scss";
+import "./MyHobbies.scss";
 import Flickity from "react-flickity-component";
-import Hobby from "../Hobby/Hobby";
+import MyHobby from "../MyHobby/MyHobby";
 
-export default function Carousel({ array }) {
+export default function MyHobbies({ array }) {
   return (
     <section className="hobbies-carousel">
       <Flickity
@@ -11,7 +11,7 @@ export default function Carousel({ array }) {
         reloadOnUpdate
       >
         {array.map((item, index) => (
-          <Hobby
+          <MyHobby
             key={index}
             id={item.id}
             name={item.hobby_name}

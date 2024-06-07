@@ -1,5 +1,4 @@
 import React from "react";
-import placeholderImg from "../../assets/images/placeholder.png";
 import "./Hobby.scss";
 
 export default function Hobby({ id, name, image, desc, isChecked, onChecked }) {
