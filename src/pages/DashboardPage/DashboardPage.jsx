@@ -4,8 +4,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
+import Carousel from "../../components/Carousel/Carousel";
 
 export default function DashboardPage({ token, setToken, user, setUser }) {
+  const [hobbies, setHobbies] = useState([]);
+
   useEffect(() => {
     async function getProfile() {
       const { data } = await axios.get(
@@ -25,16 +28,37 @@ export default function DashboardPage({ token, setToken, user, setUser }) {
       setUser(null);
     }
   }, [token]);
+
+  useEffect(() => {
+    async function getHobbies() {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_USERS}/dashboard`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setHobbies(data);
+    }
+    if(token) {
+      getHobbies();
+    } else {
+      setHobbies([]);
+    }
+  }, []);
+
   return (
     <>
       {user ? (
         <main className="dashboard">
           <Profile fname={user.first_name} token={token} setToken={setToken} />
-          <ProfileInfo user={user}/>
+          <ProfileInfo user={user} />
+          <Carousel array={hobbies}/>
         </main>
       ) : (
         <h2 className="invalid-session">
-          You are logged out. Please <Link to="/login">login</Link> again.
+          Access Denied. Please <Link to="/login">login</Link> here.
         </h2>
       )}
     </>

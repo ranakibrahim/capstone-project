@@ -43,7 +43,7 @@ export default function ChooseHobbyPage({ token, setToken, user, setUser }) {
         </main>
       ) : (
         <h2 className="invalid-session">
-          You are logged out. Please <Link to="/login">login</Link> again.
+          Access Denied. Please <Link to="/login">login</Link> here.
         </h2>
       )}
     </>
