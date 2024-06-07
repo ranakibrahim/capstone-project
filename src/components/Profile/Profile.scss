@@ -6,7 +6,42 @@
   display: flex;
   align-items: center;
   gap: $mobile-between-comp;
+  justify-content: space-between;
   
+  @include apply-top-bottom-pad(
+    $mobile-before-headline,
+    $mobile-before-headline
+  );
+  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+
+  @include desktoptablet {
+    @include apply-top-bottom-pad(
+      $desktoptablet-before-headline,
+      $desktoptablet-before-headline
+    );
+    @include apply-left-right-pad(
+      $desktoptablet-between-comp,
+      $desktoptablet-between-comp
+    );
+  }
+
+  &__nav {
+    display: flex;
+    gap: $mobile-between-comp;
+
+    @include desktoptablet {
+      gap: $desktoptablet-between-comp;
+    }
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: $mobile-between-comp;
+
+    @include desktoptablet {
+      gap: $desktoptablet-between-comp;
+    }
+  }
   &__icon {
     width: 2.5rem;
     height: 2.5rem;

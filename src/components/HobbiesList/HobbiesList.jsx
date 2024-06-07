@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Hobby from "../Hobby/Hobby";
 import "./HobbiesList.scss";
 import axios from "axios";
@@ -7,6 +8,7 @@ export default function HobbiesList() {
   const [hobbies, setHobbies] = useState([]);
   const [chosenHobbyIds, setChosenHobbyIds] = useState([]);
   const [checkedState, setCheckedState] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     getHobbies();
@@ -38,7 +40,6 @@ export default function HobbiesList() {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
     console.log(chosenHobbyIds);
 
     //make axios call
@@ -59,6 +60,7 @@ export default function HobbiesList() {
 
     setCheckedState({});
     setChosenHobbyIds([]);
+    navigate("/dashboard");
   };
 
   return (

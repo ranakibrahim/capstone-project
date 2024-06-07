@@ -1,13 +1,11 @@
 import Profile from "../../components/Profile/Profile";
 import HobbiesList from "../../components/HobbiesList/HobbiesList";
 import "./ChooseHobbyPage.scss";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export default function ChooseHobbyPage({ token, setToken, user, setUser }) {
-  const navigate = useNavigate();
-
   useEffect(() => {
     async function getProfile() {
       const { data } = await axios.get(
@@ -27,7 +25,9 @@ export default function ChooseHobbyPage({ token, setToken, user, setUser }) {
       setUser(null);
     }
   }, [token]);
-
+  if (user.numOfHobbies > 0) {
+    return <Navigate to="/dashboard" />;
+  }
   return (
     <>
       {user ? (

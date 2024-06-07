@@ -11,12 +11,13 @@ export default function MyHobbies({ array }) {
         reloadOnUpdate
       >
         {array.map((item, index) => (
-          <MyHobby
-            key={index}
-            id={item.id}
-            name={item.hobby_name}
-            image={item.image}
-          />
+          <div className="hobby-wrapper" key={index}>
+            <MyHobby
+              id={item.id}
+              name={item.hobby_name}
+              image={item.image}
+            />
+          </div>
         ))}
       </Flickity>
     </section>
