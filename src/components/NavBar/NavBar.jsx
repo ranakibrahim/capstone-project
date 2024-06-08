@@ -75,7 +75,7 @@ export default function NavBar() {
             }
             to="/signup"
           >
-            Signup
+            Sign up
           </Link>
           <Link
             onClick={closeMenu}

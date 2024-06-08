@@ -36,7 +36,7 @@ export default function SignupForm() {
           countryOptions.sort((a, b) => a.label.localeCompare(b.label))
         );
       } catch (error) {
-        console.error("Error fetching countries:", error);
+      console.error("Error fetching countries:", error);
       }
     };
 

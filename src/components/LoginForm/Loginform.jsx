@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginForm({ setToken }) {
   const [error, setError] = useState([{ email: false }, { password: false }]);
+  const [userDoesntExist, setUserDoesntExist] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
@@ -40,14 +41,19 @@ export default function LoginForm({ setToken }) {
       );
       console.log("User logged in with email: ", loginUser.email);
       const { token } = data;
-      
+
       sessionStorage.setItem("token", token);
       setToken(token);
       navigate("/choose-hobbies");
     } catch (e) {
-      console.error(e);
+      if (e.response && e.response.status === 404) {
+        setUserDoesntExist(true);
+      } else {
+        console.error("There was an error logging in.");
+      }
     }
   };
+
   return (
     <main className="login">
       <h1 className="login__title">Ready to begin your journey?</h1>
@@ -93,6 +99,16 @@ export default function LoginForm({ setToken }) {
         <button type="submit" className="form__submit">
           Login
         </button>
+        {userDoesntExist && (
+            <span className="form__error">
+              <img
+                src={errorIcon}
+                alt="error icon"
+                className="form__error-icon"
+              />
+              This user doesn't exist
+            </span>
+          )}
       </form>
     </main>
   );
