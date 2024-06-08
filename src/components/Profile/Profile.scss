@@ -22,6 +22,7 @@
       gap: $desktoptablet-between-comp;
     }
   }
+
   &__info {
     display: flex;
     align-items: center;
@@ -31,13 +32,16 @@
       gap: $desktoptablet-between-comp;
     }
   }
+
   &__icon {
     width: 2.5rem;
     height: 2.5rem;
   }
+
   &__username {
     color: $jet;
   }
+  
   &__logout {
     text-decoration: none;
     color: $jet;
