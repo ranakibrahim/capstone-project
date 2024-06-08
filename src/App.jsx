@@ -6,6 +6,7 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import ChooseHobbyPage from "./pages/ChooseHobbyPage/ChooseHobbyPage";
 import "./App.scss";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
+import HobbyPage from "./pages/HobbyPage/HobbyPage";
 
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem("token"));
@@ -31,6 +32,17 @@ function App() {
           path="/dashboard"
           element={
             <DashboardPage
+              token={token}
+              setToken={token}
+              user={user}
+              setUser={setUser}
+            />
+          }
+        />
+        <Route
+          path="/hobby/:hobbyId"
+          element={
+            <HobbyPage
               token={token}
               setToken={token}
               user={user}

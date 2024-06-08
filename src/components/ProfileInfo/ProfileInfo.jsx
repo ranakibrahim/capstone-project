@@ -13,7 +13,7 @@ export default function ProfileInfo({ user }) {
         {user.first_name}&nbsp;{user.last_name}
       </h1>
       <h2 className="profile-info__place">
-        {user.city}, &nbsp; {user.country}
+        {user.city}, {user.country}
       </h2>
     </section>
   );

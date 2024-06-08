@@ -7,22 +7,11 @@
   align-items: center;
   gap: $mobile-between-comp;
   justify-content: space-between;
-  
-  @include apply-top-bottom-pad(
-    $mobile-before-headline,
-    $mobile-before-headline
-  );
-  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+  padding: $mobile-before-headline $mobile-between-comp 0 $mobile-between-comp;
 
   @include desktoptablet {
-    @include apply-top-bottom-pad(
-      $desktoptablet-before-headline,
-      $desktoptablet-before-headline
-    );
-    @include apply-left-right-pad(
-      $desktoptablet-between-comp,
-      $desktoptablet-between-comp
-    );
+    padding: $desktoptablet-before-headline $desktoptablet-between-comp 0
+      $desktoptablet-between-comp;
   }
 
   &__nav {
