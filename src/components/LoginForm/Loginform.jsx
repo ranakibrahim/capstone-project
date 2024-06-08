@@ -63,7 +63,7 @@ export default function LoginForm({ setToken }) {
 
         <label htmlFor="email" className="form__label">
           email
-          <input type="text" id="email" name="email" className="form__field" />
+          <input type="email" id="email" name="email" className="form__field" />
           {error.email && (
             <span className="form__error">
               <img
