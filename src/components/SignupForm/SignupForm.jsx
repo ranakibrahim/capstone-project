@@ -7,21 +7,22 @@ import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 
 export default function SignupForm() {
+  const navigate = useNavigate();
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
-  const [error, setError] = useState([
-    { email: false },
-    { password: false },
-    { confPassword: false },
-    { firstName: false },
-    { lastName: false },
-    { selectedCountry: false },
-    { selectedCity: false },
-  ]);
   const [passError, setPassError] = useState(false);
-  const navigate = useNavigate();
+  const [userExists, setUserExists] = useState(false);
+  const [error, setError] = useState({
+    email: false,
+    password: false,
+    confPassword: false,
+    firstName: false,
+    lastName: false,
+    selectedCountry: false,
+    selectedCity: false,
+  });
 
   useEffect(() => {
     const getCountries = async () => {
@@ -71,7 +72,8 @@ export default function SignupForm() {
   const handleCityChange = (selectedOption) => {
     setSelectedCity(selectedOption);
   };
-  const handleSignup = (event) => {
+
+  const handleSignup = async (event) => {
     event.preventDefault();
 
     const { email, password, confPassword, firstName, lastName } =
@@ -111,11 +113,18 @@ export default function SignupForm() {
         country: selectedCountry.label,
         city: selectedCity.label,
       };
-      axios.post(`${import.meta.env.VITE_USERS}/signup`, newUser);
+      await axios.post(
+        `${import.meta.env.VITE_USERS}/signup`,
+        newUser
+      );
       console.log("New User created with email: ", email.value);
-      navigate("/login")
+      navigate("/login");
     } catch (e) {
-      console.error("There was error signing up.");
+      if (e.response && e.response.status === 409) {
+        setUserExists(true);
+      } else {
+        console.error("There was an error signing up.");
+      }
     }
   };
 
@@ -287,6 +296,16 @@ export default function SignupForm() {
         <button type="submit" className="form__submit">
           Sign up
         </button>
+        {userExists && (
+          <span className="form__error">
+            <img
+              src={errorIcon}
+              alt="error icon"
+              className="form__error-icon"
+            />
+            This user already exists
+          </span>
+        )}
       </form>
     </main>
   );
