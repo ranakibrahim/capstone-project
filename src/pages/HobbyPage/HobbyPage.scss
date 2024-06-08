@@ -2,3 +2,32 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/padding" as *;
 
+.hobby-page {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  &__card {
+    background-color: $orange;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+    @include apply-top-bottom-pad(
+      $mobile-before-headline,
+      $mobile-before-headline
+    );
+  }
+
+  &__title {
+    color: $snow;
+  }
+
+  &__image {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  &__link {
+    font-size: 13px;
+  }
+}

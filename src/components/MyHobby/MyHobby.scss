@@ -11,6 +11,7 @@
   border-radius: 8px;
   position: relative;
   padding: $mobile-before-headline $mobile-between-comp;
+  cursor: pointer;
 
   &__image {
     width: 200px;

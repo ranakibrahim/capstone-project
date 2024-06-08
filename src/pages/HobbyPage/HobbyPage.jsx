@@ -8,7 +8,7 @@ export default function HobbyPage({ token, setToken, user, setUser }) {
   const { hobbyId } = useParams();
   const [currentHobbyData, setCurrentHobbyData] = useState({});
   const [activeHobbyId, setActiveHobbyId] = useState(hobbyId);
-  
+
   useEffect(() => {
     async function getProfile() {
       const { data } = await axios.get(
@@ -19,7 +19,6 @@ export default function HobbyPage({ token, setToken, user, setUser }) {
           },
         }
       );
-      console.log(data);
       setUser(data);
     }
     if (token) {
@@ -28,7 +27,7 @@ export default function HobbyPage({ token, setToken, user, setUser }) {
       setUser(null);
     }
   }, [token]);
-  
+
   useEffect(() => {
     setActiveHobbyId(hobbyId);
   }, [hobbyId]);
@@ -50,6 +49,21 @@ export default function HobbyPage({ token, setToken, user, setUser }) {
   return (
     <main className="hobby-page">
       <Profile fname={user.first_name} token={token} setToken={setToken} />
+      <section className="hobby-page__card">
+        <h1 className="hobby-page__title">{currentHobbyData.hobby_name}</h1>
+        <img
+          src={currentHobbyData.image}
+          alt={currentHobbyData.hobby_name}
+          className="hobby-page__image"
+        />
+        <p className="hobby-page__desc">{currentHobbyData.hobby_description}</p>
+        <span className="hobby-page__link">
+          Link:{" "}
+          <a href={currentHobbyData.hobby_wiki}>
+            {currentHobbyData.hobby_wiki}
+          </a>
+        </span>
+      </section>
     </main>
   );
 }

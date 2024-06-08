@@ -41,7 +41,7 @@ export default function DashboardPage({ token, setToken, user, setUser }) {
       );
       setHobbies(data);
     }
-    if(token) {
+    if (token) {
       getHobbies();
     } else {
       setHobbies([]);
@@ -54,7 +54,10 @@ export default function DashboardPage({ token, setToken, user, setUser }) {
         <main className="dashboard">
           <Profile fname={user.first_name} token={token} setToken={setToken} />
           <ProfileInfo user={user} />
-          <MyHobbies array={hobbies}/>
+          <section className="dashboard__section">
+            <h1 className="dashboard__subtitle">My <span className="dashboard__emphasized">Hobbies</span></h1>
+            <MyHobbies array={hobbies} />
+          </section>
         </main>
       ) : (
         <h2 className="invalid-session">
