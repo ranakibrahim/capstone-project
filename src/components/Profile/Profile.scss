@@ -41,9 +41,16 @@
   &__username {
     color: $jet;
   }
-  
+
   &__logout {
     text-decoration: none;
     color: $jet;
+  }
+  &__link {
+    &--disabled {
+      color: $grey;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   }
 }
