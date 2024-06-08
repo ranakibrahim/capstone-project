@@ -30,4 +30,13 @@
   &__link {
     font-size: 13px;
   }
+
+  &__back-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    img {
+      vertical-align: sub;
+    }
+  }
 }

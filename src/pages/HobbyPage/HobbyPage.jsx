@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./HobbyPage.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Profile from "../../components/Profile/Profile";
+import arrowIcon from "../../assets/icons/arrow-back.svg";
 
 export default function HobbyPage({ token, setToken, user, setUser }) {
   const { hobbyId } = useParams();
@@ -50,7 +51,12 @@ export default function HobbyPage({ token, setToken, user, setUser }) {
     <main className="hobby-page">
       <Profile fname={user.first_name} token={token} setToken={setToken} />
       <section className="hobby-page__card">
-        <h1 className="hobby-page__title">{currentHobbyData.hobby_name}</h1>
+        <section className="hobby-page__back-title">
+          <Link to="/dashboard">
+            <img src={arrowIcon} alt="arrow icon" />
+          </Link>
+          <h1 className="hobby-page__title">{currentHobbyData.hobby_name}</h1>
+        </section>
         <img
           src={currentHobbyData.image}
           alt={currentHobbyData.hobby_name}
