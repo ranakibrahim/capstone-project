@@ -1,0 +1,41 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/padding" as *;
+
+.more-info {
+  @include apply-top-bottom-pad($mobile-before-headline, $mobile-between-comp);
+  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+  
+  &__title {
+    text-align: center;
+  }
+
+  &__image {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  &__paragraph {
+
+  }
+}
+
+.howtouse {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    text-align: center;
+
+    span {
+      color: $orange;
+    }
+  }
+
+  &__box {
+    background-color: $viridian;
+    width: 12rem;
+    height: 12rem;
+  }
+}
