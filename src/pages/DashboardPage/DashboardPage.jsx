@@ -55,7 +55,9 @@ export default function DashboardPage({ token, setToken, user, setUser }) {
           <Profile fname={user.first_name} token={token} setToken={setToken} />
           <ProfileInfo user={user} />
           <section className="dashboard__section">
-            <h1 className="dashboard__subtitle">My <span className="dashboard__emphasized">Hobbies</span></h1>
+            <h1 className="dashboard__subtitle">
+              My <span className="dashboard__emphasized">Hobbies</span>
+            </h1>
             <MyHobbies array={hobbies} />
           </section>
         </main>

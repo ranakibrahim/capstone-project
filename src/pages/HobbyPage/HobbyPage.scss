@@ -3,9 +3,6 @@
 @use "../../styles/partials/padding" as *;
 
 .hobby-page {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
   &__card {
     background-color: $orange;
     display: flex;
@@ -16,6 +13,12 @@
       $mobile-before-headline,
       $mobile-before-headline
     );
+  }
+
+  &__sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
   &__title {
@@ -39,4 +42,12 @@
       vertical-align: sub;
     }
   }
+
+  &__subtitle {
+    padding-left: $mobile-between-comp;
+  }
+  &__emphasized {
+    color: $orange;
+  }
+
 }

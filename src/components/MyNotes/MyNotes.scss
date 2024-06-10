@@ -1,0 +1,26 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/padding" as *;
+
+.quill {
+  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+  @include apply-top-bottom-pad($mobile-between-comp, $mobile-between-comp);
+  height: 100%;
+  background-color: $jet;
+
+}
+
+.ql-container {
+  p {
+    height: 100%;
+  }
+}
+
+.ql-editor {
+  all: unset;
+}
+
+.ql-snow {
+  background-color: $snow;
+}
+
