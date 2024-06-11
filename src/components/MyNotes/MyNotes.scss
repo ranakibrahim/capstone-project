@@ -3,11 +3,8 @@
 @use "../../styles/partials/padding" as *;
 
 .quill {
-  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
-  @include apply-top-bottom-pad($mobile-between-comp, $mobile-between-comp);
   height: 100%;
   background-color: $jet;
-
 }
 
 .ql-container {
@@ -24,3 +21,34 @@
   background-color: $snow;
 }
 
+.mynotes {
+  background-color: $jet;
+}
+
+.mynotes {
+  @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+  @include apply-top-bottom-pad($mobile-between-comp, $mobile-between-comp);
+  display: flex;
+  flex-direction: column;
+  gap: $mobile-between-comp;
+  &__save {
+    background-color: $snow;
+    color: $blush;
+    font-weight: 600;
+    min-height: 1.75rem;
+    border-radius: 8px;
+    border: 1px solid $blush;
+    width: 5rem;
+    align-self: center;
+
+    &:hover {
+      background-color: $blush;
+      color: $snow;
+      border: 1px solid $snow;
+      cursor: pointer;
+      transition: background-color 1s;
+      transition: color 1s;
+      transition: border 1s;
+    }
+  }
+}

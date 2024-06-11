@@ -8,7 +8,6 @@ export default function Profile({ fname, token, setToken }) {
     sessionStorage.removeItem("token");
     setToken(null);
   };
-  console.log(location.pathname)
   return (
     <section className="profile">
       <section className="profile__info">
@@ -19,7 +18,12 @@ export default function Profile({ fname, token, setToken }) {
       </section>
       <nav className="profile__nav">
         {location.pathname == "/choose-hobbies" ? (
-          <NavLink to="/dashboard" className="profile__link profile__link--disabled" >Dashboard</NavLink>
+          <NavLink
+            to="/dashboard"
+            className="profile__link profile__link--disabled"
+          >
+            Dashboard
+          </NavLink>
         ) : (
           <NavLink to="/dashboard">Dashboard</NavLink>
         )}
