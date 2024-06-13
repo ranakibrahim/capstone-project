@@ -5,6 +5,8 @@
 .hobbies-carousel {
   background-color: $jet;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .hobby-wrapper {

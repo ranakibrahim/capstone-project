@@ -15,11 +15,18 @@
     );
   }
 
+  &__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   &__sections {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   &__title {
@@ -55,11 +62,59 @@
   }
   &__emphasized {
     color: $orange;
+    &--white {
+      color: $snow;
+    }
   }
 
   .food-img {
     width: 20rem;
     height: auto;
     padding-right: 50px;
+  }
+
+  &__form {
+    @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
+    background-color: $jet;
+  }
+
+  &__form-section {
+    @include apply-top-bottom-pad(
+      $mobile-before-headline,
+      $mobile-before-headline
+    );
+    display: flex;
+    color: $blush;
+    h3 {
+      width: 50%;
+      text-align: right;
+    }
+    input {
+      color: $jet;
+      margin-left: 50px;
+      text-align: end;
+      border-radius: 5px;
+    }
+  }
+
+  &__import {
+    background-color: $snow;
+    color: $blush;
+    font-weight: 600;
+    min-height: 1.75rem;
+    border-radius: 8px;
+    border: 1px solid $blush;
+    width: 6rem;
+    align-self: center;
+margin-top: 50px;
+    &:hover {
+      background-color: $blush;
+      color: $snow;
+      border: 1px solid $snow;
+      cursor: pointer;
+      transition: background-color 1s;
+      transition: color 1s;
+      transition: border 1s;
+    }
   }
 }

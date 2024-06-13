@@ -110,7 +110,45 @@ export default function HobbyPage({ token, setToken, user, setUser }) {
               <img src={food2} alt="" className="food-img" />
               <img src={food3} alt="" className="food-img" />
             </Flickity>
+            <button className="hobby-page__import">Import image</button>
           </section>
+        </section>
+        <section className="hobby-page__section">
+          <h1 className="hobby-page__subtitle">
+            My budget for{" "}
+            <span className="hobby-page__emphasized">
+              {currentHobbyData.hobby_name}
+            </span>
+          </h1>
+          <form className="hobby-page__form">
+            <section className="hobby-page__form-section">
+              <h3>
+                Allocated budget for{" "}
+                <span className="hobby-page__emphasized--white">
+                  {currentHobbyData.hobby_name}
+                </span>
+              </h3>
+              <input type="number" placeholder="500" />
+            </section>
+            <section className="hobby-page__form-section">
+              <h3>
+                Total surplus{" "}
+                <span className="hobby-page__emphasized--white">
+                  {currentHobbyData.hobby_name}
+                </span>
+              </h3>
+              <input type="number" placeholder="100" />
+            </section>
+            <section className="hobby-page__form-section">
+              <h3>
+                Total spent on{" "}
+                <span className="hobby-page__emphasized--white">
+                  {currentHobbyData.hobby_name}
+                </span>
+              </h3>
+              <input type="number" value="325.36" readOnly />
+            </section>
+          </form>
         </section>
       </section>
     </main>
