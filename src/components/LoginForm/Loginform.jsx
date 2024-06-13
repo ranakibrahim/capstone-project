@@ -100,15 +100,15 @@ export default function LoginForm({ setToken }) {
           Login
         </button>
         {userDoesntExist && (
-            <span className="form__error">
-              <img
-                src={errorIcon}
-                alt="error icon"
-                className="form__error-icon"
-              />
-              This user doesn't exist
-            </span>
-          )}
+          <span className="form__error">
+            <img
+              src={errorIcon}
+              alt="error icon"
+              className="form__error-icon"
+            />
+            This user doesn't exist
+          </span>
+        )}
       </form>
     </main>
   );

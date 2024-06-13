@@ -5,6 +5,10 @@ import axios from "axios";
 import Profile from "../../components/Profile/Profile";
 import arrowIcon from "../../assets/icons/arrow-back.svg";
 import MyNotes from "../../components/MyNotes/MyNotes";
+import Flickity from "react-flickity-component";
+import food1 from "../../assets/images/food1.jpg";
+import food2 from "../../assets/images/food2.jpg";
+import food3 from "../../assets/images/food3.jpg";
 
 export default function HobbyPage({ token, setToken, user, setUser }) {
   const { hobbyId } = useParams();
@@ -72,7 +76,7 @@ export default function HobbyPage({ token, setToken, user, setUser }) {
             </p>
             <span className="hobby-page__link">
               Link:{" "}
-              <a href={currentHobbyData.hobby_wiki}>
+              <a target="_blank" href={currentHobbyData.hobby_wiki}>
                 {currentHobbyData.hobby_wiki}
               </a>
             </span>
@@ -91,11 +95,22 @@ export default function HobbyPage({ token, setToken, user, setUser }) {
 
         <section className="hobby-page__section">
           <h1 className="hobby-page__subtitle">
-            My pictures for{" "}
+            My gallery for{" "}
             <span className="hobby-page__emphasized">
               {currentHobbyData.hobby_name}
             </span>
           </h1>
+          <section className="hobbies-carousel">
+            <Flickity
+              elementType="section"
+              options={{ pageDots: true }}
+              reloadOnUpdate
+            >
+              <img src={food1} alt="" className="food-img" />
+              <img src={food2} alt="" className="food-img" />
+              <img src={food3} alt="" className="food-img" />
+            </Flickity>
+          </section>
         </section>
       </section>
     </main>

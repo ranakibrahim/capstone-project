@@ -82,6 +82,9 @@
     padding: 0 0.5rem;
     min-height: 1.75rem;
     color: $jet;
+    @include desktoptablet {
+      font-size: 13px;
+    }
   }
 
   &__submit {
@@ -107,7 +110,7 @@
 
   &__error {
     font-size: 9px;
-    color: #E71F1F;
+    color: #e71f1f;
   }
 
   &__error-icon {

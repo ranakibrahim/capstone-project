@@ -12,11 +12,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
   @include desktoptablet {
     height: 100vh;
   }
-  
+
   &__banner {
     text-align: center;
     position: relative;
@@ -28,7 +28,12 @@
     @include apply-left-right-mar($mobile-between-comp, $mobile-between-comp);
 
     @include desktoptablet {
-      @include apply-left-right-mar(7rem, 7rem);
+      margin: 0 auto;
+      @include apply-left-right-pad(
+        $desktoptablet-between-comp,
+        $desktoptablet-between-comp
+      );
+      width: fit-content;
     }
 
     &::before {

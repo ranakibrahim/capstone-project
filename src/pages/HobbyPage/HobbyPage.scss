@@ -19,15 +19,22 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding-top: 3rem;
   }
 
   &__title {
     color: $snow;
+    @include desktoptablet {
+      font-size: larger;
+    }
   }
 
   &__image {
     width: 100%;
     border-radius: 8px;
+    @include desktoptablet {
+      width: 50%;
+    }
   }
 
   &__link {
@@ -50,4 +57,9 @@
     color: $orange;
   }
 
+  .food-img {
+    width: 20rem;
+    height: auto;
+    padding-right: 50px;
+  }
 }
