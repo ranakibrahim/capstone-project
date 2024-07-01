@@ -36,7 +36,7 @@ export default function SignupForm() {
           countryOptions.sort((a, b) => a.label.localeCompare(b.label))
         );
       } catch (error) {
-      console.error("Error fetching countries:", error);
+        console.error("Error fetching countries:", error);
       }
     };
 
@@ -48,7 +48,7 @@ export default function SignupForm() {
       if (selectedCountry) {
         try {
           const response = await axios.get(
-            `http://api.geonames.org/searchJSON?country=${selectedCountry.value}&maxRows=1000&username=rkibra`
+            `http://api.geonames.org/searchJSON?country=${selectedCountry.value}&maxRows=1000&username=demorana`
           );
           const cityOptions = response.data.geonames.map((city) => ({
             value: city.geonameId,
@@ -113,10 +113,7 @@ export default function SignupForm() {
         country: selectedCountry.label,
         city: selectedCity.label,
       };
-      await axios.post(
-        `${import.meta.env.VITE_USERS}/signup`,
-        newUser
-      );
+      await axios.post(`${import.meta.env.VITE_USERS}/signup`, newUser);
       console.log("New User created with email: ", email.value);
       navigate("/login");
     } catch (e) {

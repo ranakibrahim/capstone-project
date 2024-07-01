@@ -76,9 +76,12 @@
   &__form {
     @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
     background-color: $jet;
+    display: flex;
+    flex-direction: column;
   }
 
   &__form-section {
+    width: 100%;
     @include apply-top-bottom-pad(
       $mobile-before-headline,
       $mobile-before-headline
@@ -94,6 +97,8 @@
       margin-left: 50px;
       text-align: end;
       border-radius: 5px;
+      font-size: 20px;
+      width: 100%;
     }
   }
 
@@ -106,7 +111,7 @@
     border: 1px solid $blush;
     width: 6rem;
     align-self: center;
-margin-top: 50px;
+    margin-top: 50px;
     &:hover {
       background-color: $blush;
       color: $snow;

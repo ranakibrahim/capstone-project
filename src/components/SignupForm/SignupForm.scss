@@ -4,7 +4,7 @@
 
 .signup,
 .login {
-  height: fit-content;
+  height: 100%;
   @include apply-top-bottom-mar(
     $mobile-before-headline,
     $mobile-before-headline
@@ -19,6 +19,18 @@
   &__title {
     color: $jet;
     text-align: center;
+  }
+}
+
+.login {
+  @include desktoptablet {
+    height: 75vh;
+  }
+}
+
+.signup {
+  @include desktoptablet {
+    height: 100%;
   }
 }
 

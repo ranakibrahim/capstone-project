@@ -7,7 +7,7 @@
   flex-direction: column;
   gap: $mobile-between-comp;
   background-color: $orange;
-
+  height: auto;
   @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
   @include apply-top-bottom-pad(
     $mobile-before-headline,

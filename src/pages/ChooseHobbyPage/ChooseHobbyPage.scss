@@ -7,6 +7,9 @@
     margin-top: 3rem;
     @include apply-left-right-pad($mobile-between-comp, $mobile-between-comp);
     color: $jet;
+    @include desktoptablet {
+      @include apply-left-right-pad($desktoptablet-between-comp, $desktoptablet-between-comp);
+    }
   }
 
   &__username {
